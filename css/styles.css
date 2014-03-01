@@ -1,0 +1,85 @@
+
+.board {
+	position: relative;
+	width: 900px;
+	height: 900px;
+	background-color: #999;
+}
+
+.booger {
+	position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #f7f7f7;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.booger.green {
+	background-color: green;
+}
+
+.booger.red {
+	background-color: lightsalmon;
+}
+
+.booger:before {
+    height: 0;
+    width: 40px;
+    content: "";
+    position: absolute;
+    border-bottom: 30px solid #f7f7f7;
+    border-left: 30px solid #666;
+    border-right: 30px solid #666;
+    border-radius: 50%;
+}
+
+.booger:after {
+    height: 0;
+    width: 40px;
+    content: "";
+    position: absolute;
+    border-top: 30px solid #f7f7f7;
+    border-left: 30px solid #666;
+    border-right: 30px solid #666;
+    border-radius: 50%;
+    margin: 70px 0 0 0;
+}
+
+
+@keyframes jiggle {
+    0% {
+        transform: rotate(-1deg);
+        }
+        50% {
+        transform: rotate(1deg);
+        }
+}
+
+.booger.selected {
+	animation: jiggle 0.2s infinite;
+    -webkit-animation: jiggle 0.2s infinite;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-name: jiggle;
+    -moz-animation-iteration-count: infinite;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+}
+ 
+@-webkit-keyframes jiggle {
+    0% {
+        -webkit-transform: rotate(-1deg);
+        }
+        50% {
+        -webkit-transform: rotate(1deg);
+        }
+}
+ 
+@-moz-keyframes jiggle {
+    0% {
+        -moz-transform: rotate(-1deg);
+        }
+        50% {
+                -moz-transform: rotate(1deg);
+        }
+}
