@@ -11,18 +11,23 @@
     width: 100px;
     height: 100px;
     background: #f7f7f7;
-    border-radius: 50%;
     margin: auto;
 }
 
 .booger.green {
-	background-color: green;
+	/*background-color: green; */
+	background: url('../img/cow.png');
+	background-size: 100px auto;
+	background-position: center;
 }
 
 .booger.red {
-	background-color: lightsalmon;
+	/*background-color: lightsalmon; */
+	background: url('../img/horse.png');
+	background-size: 100px auto;
+	background-position: center;
 }
-
+/*
 .booger:before {
     height: 0;
     width: 40px;
@@ -44,7 +49,7 @@
     border-right: 30px solid #666;
     border-radius: 50%;
     margin: 70px 0 0 0;
-}
+}*/
 
 
 @keyframes jiggle {
