@@ -93,3 +93,16 @@
                 -moz-transform: rotate(1deg);
         }
 }
+
+
+.tile {
+	display: inline-block;
+	width: 98px;
+	height: 98px;
+	border: 1px solid black;
+	background-color: #999;
+}
+
+.tile:hover, .booger:hover {
+	background-color: #cfcfcf;
+}

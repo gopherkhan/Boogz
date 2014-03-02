@@ -67,6 +67,11 @@ window.Boogz = (function Boogz() {
 
 		var el = doc.createDocumentFragment();
 		var board = doc.createElement('div');
+		var tileStr = '';
+		for (var tIdx = 0; tIdx < width * height; ++ tIdx) {
+			tileStr += "<div class='tile'></div>";
+		}
+		board.innerHTML = tileStr;
 		board.classList.add("board");
 		el.appendChild(board);
 		
