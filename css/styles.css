@@ -10,22 +10,27 @@
 	position: absolute;
     width: 100px;
     height: 100px;
-    background: #f7f7f7;
     margin: auto;
+    background-size: 100px auto;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .booger.green {
 	/*background-color: green; */
 	background: url('../img/cow.png');
-	background-size: 100px auto;
+	background-size: 80% auto;
 	background-position: center;
+	background-repeat: no-repeat;
+	
 }
 
 .booger.red {
 	/*background-color: lightsalmon; */
 	background: url('../img/horse.png');
-	background-size: 100px auto;
+	background-size: 80% auto;
 	background-position: center;
+	background-repeat: no-repeat;
 }
 /*
 .booger:before {
