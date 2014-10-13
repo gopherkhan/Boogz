@@ -48,6 +48,7 @@ window.Boogz = (function Boogz() {
 			return type;
 		}
 
+
 		return {
 			render: render,
 			move: move,
@@ -114,8 +115,9 @@ window.Boogz = (function Boogz() {
 		
 		
 		function canMove(tileIdx) {
+			var selectedPos = selected.getPosition();
 			var pos = getTilePosition(tileIdx);
-			if (Math.abs(selected.row - pos.row) > 2 || Math.abs(selected.col - pos.col) > 2) {
+			if (Math.abs(selectedPos[0] - pos.row) > 2 || Math.abs(selectedPos[1] - pos.col) > 2) {
 				return false;
 			} 
 			if (grid[pos.row][pos.col]) { return false; }
