@@ -7,17 +7,49 @@ window.Boogz = (function Boogz() {
 
 	/* el hoa */
 	function Booger(row, col, type) {
-		var cssPosition = calcStylePosition(row, col);
 		var el = doc.createDocumentFragment();
 		var boog = doc.createElement('div');
+		var callback, animationClass;
+		var DIRECTIONS = {
+			UP: "up",
+			DOWN: "down",
+			RIGHT: "right",
+			LEFT: "left",
+			X2: "2x"
+		}
 
 		boog.classList.add('booger');
 		if (type) {
 			boog.classList.add(type);
 		}
-		boog.style.left = cssPosition[1] + "px";
-		boog.style.top = cssPosition[0] + "px";
+
 		boog.dataset.id = boogId++;
+		updateCSSPosition();
+
+		function updateCSSPosition() {
+			var cssPosition = calcStylePosition(row, col);
+			boog.style.left = cssPosition[1] + "px";
+			boog.style.top = cssPosition[0] + "px";
+		}
+
+
+
+		function animationEndHandler() {
+			if (callback) {
+				callback();
+				callback = null;
+			}
+			if (animationClass) {
+				boog.classList.toggle(animationClass);
+			}
+		}
+
+		['animationend',
+			'webkitAnimationEnd',
+			'oanimationend',
+			'MSAnimationEnd'].forEach(function(eventName) {
+					boog.addEventListener(eventName, animationEndHandler);
+		});
 
 		el.appendChild(boog);
 
@@ -33,21 +65,25 @@ window.Boogz = (function Boogz() {
 			return [row * CELL_DIFF, col * CELL_DIFF];
 		}
 
-		function move(dirMag, onComplete) {
-			if (!dirMag || !dirMag.length) { return; }
-			dirMag.unshift("move");
-			var moveClass = dirMag.join("-");
-			console.log("TTT this is our moveClass: " + moveClass);
-			boog.classList.toggle(moveClass);
-			setTimeout(function() {
+		function move(destination, onComplete) {
+			animationClass = getAnimationClass(destination);
+			console.log("TTT this is our moveClass: " + animationClass);
+			callback = function() {
+				row = destination.row;
+				col = destination.col;
 				onComplete();
-				//boog.classList.toggle(moveClass);
-			}, dirMag.isSplit ? 1000 : 1500)
+				updateCSSPosition();
+			}
+			boog.classList.toggle(animationClass);
 
 		}
 		function select() {
 			// This will move to delegation later
 			boog.classList.toggle('selected');
+		}
+
+		function clone() {
+			return new Booger(row, col, type);
 		}
 
 		function getId() {
@@ -58,6 +94,32 @@ window.Boogz = (function Boogz() {
 			return type;
 		}
 
+		function getAnimationClass(dest) {
+			var directions = [];
+			if (row != dest.row) {
+				if (row < dest.row) {
+					directions.push(DIRECTIONS.DOWN);
+				} else {
+					directions.push(DIRECTIONS.UP);
+				}
+			}
+
+			if (col != dest.col) {
+				if (col < dest.col) {
+					directions.push(DIRECTIONS.RIGHT);
+				} else {
+					directions.push(DIRECTIONS.LEFT);
+				}
+			}
+			if (directions.length) {
+				directions.unshift("move")
+				if (Math.max(Math.abs(col - dest.col), Math.abs(row - dest.row)) > 1) {
+					directions.push(DIRECTIONS.X2);
+				}
+			}
+			return directions.join("-");
+		}
+
 
 		return {
 			render: render,
@@ -65,20 +127,14 @@ window.Boogz = (function Boogz() {
 			select: select,
 			getPosition: getPosition,
 			getId: getId,
-			getType: getType
+			getType: getType,
+			clone: clone
 		}
 	}
 
 	function Board() {
 		var height = 9, width = 9;
 		var selected;
-		var DIRECTIONS = {
-			UP: "up",
-			DOWN: "down",
-			RIGHT: "right",
-			LEFT: "left",
-			X2: "2x"
-		}
 
 		var grid = new Array(height);
 
@@ -109,11 +165,15 @@ window.Boogz = (function Boogz() {
 
 		function addBooger(row, col, type) {
 			var aBoogie = new Booger(row, col, type);
-			boogs.push(aBoogie);
+			return manuallyAddBooger(aBoogie, row, col);
+		}
+
+		function manuallyAddBooger(toAdd, row, col) {
+			boogs.push(toAdd);
 			// replace  color with booger
-			grid[row][col] = aBoogie;
-			boogies[aBoogie.getId()] = aBoogie;
-			return aBoogie;
+			grid[row][col] = toAdd;
+			boogies[toAdd.getId()] = toAdd;
+			return toAdd;
 		}
 
 		var el = doc.createDocumentFragment();
@@ -143,34 +203,10 @@ window.Boogz = (function Boogz() {
 			return true;
 		}
 
-		function getDirMag(source, dest) {
-			var directions = [];
-			if (source.row != dest.row) {
-				if (source.row < dest.row) {
-					directions.push(DIRECTIONS.DOWN);
-				} else {
-					directions.push(DIRECTIONS.UP);
-				}
-			}
-
-			if (source.col != dest.col) {
-				if (source.col < dest.col) {
-					directions.push(DIRECTIONS.RIGHT);
-				} else {
-					directions.push(DIRECTIONS.LEFT);
-				}
-			}
-			if (directions.length) {
-				if (Math.max(Math.abs(source.col - dest.col), Math.abs(source.row - dest.row)) > 1) {
-					directions.push(DIRECTIONS.X2);
-					directions.isSplit = false;
-				} else {
-					directions.isSplit = true; // find a better place for this as we go along
-				}
-
-			}
-			return directions;
+		function moveIsSplit(source, dest) {
+			return (Math.max(Math.abs(source.col - dest.col), Math.abs(source.row - dest.row)) == 1);
 		}
+
 
 		function handleClick(e) {
 			if (e.target) {
@@ -181,6 +217,8 @@ window.Boogz = (function Boogz() {
 					}
 					// Test logic at the moment.
 					var dest = getTilePosition(e.target.dataset.tile);
+					var isSplit = moveIsSplit(selected.getPosition(), dest);
+					console.log("@@@ is this a split? " + isSplit);
 					// var dirMag = getDirMag(selected.getPosition(), dest);
 					// console.log("This is our dirMag: " + JSON.stringify(dirMag));
 					// if (!dirMag.isSplit) {
@@ -189,13 +227,22 @@ window.Boogz = (function Boogz() {
 					// } else {
 					// 	plopBoogie();
 					// }
-
-					// function plopBoogie() {
+					if (isSplit) {
+						var cloned = selected.clone();
+						board.appendChild(cloned.render());
+						cloned.move(dest, function() {
+							console.log("ohhhh yeah");
+							manuallyAddBooger(cloned, dest.row, dest.col);
+						});
+						selected.select();
+						selected = null;
+					} else {
 						var freshboog = addBooger(dest.row, dest.col, selected.getType());
 						board.appendChild(freshboog.render());
 						selected.select();
 						selected = null;
-					// }
+					 }
+
 				} else if (e.target.classList.contains('booger')) {
 					var aBoogie = boogies[e.target.dataset.id];
 					aBoogie.select();
@@ -207,6 +254,14 @@ window.Boogz = (function Boogz() {
 
 				}
 			}
+		}
+
+		function splitBooger(target, dest) {
+			var freshboog = addBooger(dest.row, dest.col, selected.getType());
+			board.appendChild(freshboog.render());
+			selected.select();
+			selected = null;
+
 		}
 
 		function moveBooger(target, dest, magnitude, onComplete) {

@@ -40,20 +40,20 @@
     background: #f00;*/
     -webkit-animation-name: spin;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: spin;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: spin;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: spin;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
 }
 @-ms-keyframes spin {
@@ -84,20 +84,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -110,20 +110,20 @@
     background: #f00;*/
     -webkit-animation-name: move-right;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-right;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-right;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-right;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -136,20 +136,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -161,20 +161,20 @@
     background: #f00;*/
     -webkit-animation-name: move-left;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-left;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-left;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-left;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -186,20 +186,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up-left;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up-left;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up-left;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up-left;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -211,20 +211,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up-right;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up-right;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up-right;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up-right;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -236,20 +236,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down-left;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down-left;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down-left;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down-left;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -261,20 +261,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down-right;
     -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down-right;
     -moz-animation-duration: 1000ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down-right;
     -ms-animation-duration: 1000ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down-right;
     animation-duration: 1000ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -288,20 +288,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -314,20 +314,20 @@
     background: #f00;*/
     -webkit-animation-name: move-right-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-right-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-right-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-right-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -340,20 +340,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -365,20 +365,20 @@
     background: #f00;*/
     -webkit-animation-name: move-left-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-left-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-left-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-left-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -390,20 +390,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up-left-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up-left-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up-left-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up-left-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -415,20 +415,20 @@
     background: #f00;*/
     -webkit-animation-name: move-up-right-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-up-right-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-up-right-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-up-right-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -440,20 +440,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down-left-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down-left-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down-left-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down-left-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -465,20 +465,20 @@
     background: #f00;*/
     -webkit-animation-name: move-down-right-2x;
     -webkit-animation-duration: 1500ms;
-    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -moz-animation-name: move-down-right-2x;
     -moz-animation-duration: 1500ms;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: linear;
     -ms-animation-name: move-down-right-2x;
     -ms-animation-duration: 1500ms;
-    -ms-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
 
     animation-name: move-down-right-2x;
     animation-duration: 1500ms;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     z-index: 9001;
 }
@@ -879,11 +879,11 @@
 }
 
 .booger.selected {
-	animation: jiggle 0.2s infinite;
-    -webkit-animation: jiggle 0.2s infinite;
+	animation: jiggle 0.2s 1;
+    -webkit-animation: jiggle 0.2s 1;
     -moz-animation-duration: 0.2s;
     -moz-animation-name: jiggle;
-    -moz-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: 1;
     -webkit-transform: rotate(-1deg);
     -moz-transform: rotate(-1deg);
 }
