@@ -42,6 +42,7 @@ window.Boogz = (function Boogz() {
 			if (animationClass) {
 				boog.classList.toggle(animationClass);
 			}
+			animationClass = null;
 		}
 
 		['animationend',
@@ -237,10 +238,20 @@ window.Boogz = (function Boogz() {
 						selected.select();
 						selected = null;
 					} else {
-						var freshboog = addBooger(dest.row, dest.col, selected.getType());
-						board.appendChild(freshboog.render());
+						var oldPos = selected.getPosition();
+						// shift the booger in the array
+						var moving = selected;
+						selected.move(dest, function() {
+							grid[oldPos.row][oldPos.col] = null;
+							grid[dest.row][dest.col] = moving;
+						})
 						selected.select();
 						selected = null;
+
+						// var freshboog = addBooger(dest.row, dest.col, selected.getType());
+						// board.appendChild(freshboog.render());
+						// selected.select();
+						// selected = null;
 					 }
 
 				} else if (e.target.classList.contains('booger')) {
@@ -256,13 +267,13 @@ window.Boogz = (function Boogz() {
 			}
 		}
 
-		function splitBooger(target, dest) {
-			var freshboog = addBooger(dest.row, dest.col, selected.getType());
-			board.appendChild(freshboog.render());
-			selected.select();
-			selected = null;
+		// function splitBooger(target, dest) {
+		// 	var freshboog = addBooger(dest.row, dest.col, selected.getType());
+		// 	board.appendChild(freshboog.render());
+		// 	selected.select();
+		// 	selected = null;
 
-		}
+		// }
 
 		function moveBooger(target, dest, magnitude, onComplete) {
 			target.move()

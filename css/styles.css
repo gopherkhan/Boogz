@@ -879,11 +879,11 @@
 }
 
 .booger.selected {
-	animation: jiggle 0.2s 1;
-    -webkit-animation: jiggle 0.2s 1;
+	animation: jiggle 0.2s infinite;
+    -webkit-animation: jiggle 0.2s infinite;
     -moz-animation-duration: 0.2s;
     -moz-animation-name: jiggle;
-    -moz-animation-iteration-count: 1;
+    -moz-animation-iteration-count: infinite;
     -webkit-transform: rotate(-1deg);
     -moz-transform: rotate(-1deg);
 }
