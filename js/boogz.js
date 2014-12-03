@@ -32,6 +32,17 @@ window.Boogz = (function Boogz() {
 			boog.style.top = cssPosition[0] + "px";
 		}
 
+		function destroy() {
+			['animationend',
+			'webkitAnimationEnd',
+			'oanimationend',
+			'MSAnimationEnd'].forEach(function(eventName) {
+					boog.removeEventListener(eventName, animationEndHandler);
+				});
+			boog.innerHTML = "";
+			boog = null;
+			el = null;
+		}
 
 
 		function animationEndHandler() {
@@ -129,7 +140,8 @@ window.Boogz = (function Boogz() {
 			getPosition: getPosition,
 			getId: getId,
 			getType: getType,
-			clone: clone
+			clone: clone,
+			destroy: destroy
 		}
 	}
 
@@ -232,8 +244,12 @@ window.Boogz = (function Boogz() {
 						var cloned = selected.clone();
 						board.appendChild(cloned.render());
 						cloned.move(dest, function() {
-							console.log("ohhhh yeah");
 							manuallyAddBooger(cloned, dest.row, dest.col);
+							var targets = checkAbsorption(cloned);
+							if (targets.length) {
+								absorbTargets(cloned, targets);
+							}
+							console.log("targets: " + JSON.stringify(targets));
 						});
 						selected.select();
 						selected = null;
@@ -244,7 +260,12 @@ window.Boogz = (function Boogz() {
 						selected.move(dest, function() {
 							grid[oldPos.row][oldPos.col] = null;
 							grid[dest.row][dest.col] = moving;
-						})
+							var targets = checkAbsorption(moving);
+							console.log("targets: " + JSON.stringify(targets));
+							if (targets.length) {
+								absorbTargets(moving, targets);
+							}
+						});
 						selected.select();
 						selected = null;
 
@@ -265,6 +286,44 @@ window.Boogz = (function Boogz() {
 
 				}
 			}
+		}
+
+		function absorbTargets(piece, targets) {
+			var clones = [];
+			var cloned;
+			var i;
+			for (i = 0; i < targets.length; ++i) {
+				cloned = piece.clone();
+				clones.push(cloned);
+				board.appendChild(cloned.render());
+			}
+
+			for (i = 0; i < targets.length; ++i) {
+				iLikeToMoveItMoveIt(clones[i], targets[i]);//clones[i].move(targets[i], )
+			}
+
+			function iLikeToMoveItMoveIt(aClone, dest) {
+				aClone.move(dest, function() {
+					grid[dest.row][dest.col].destroy();
+					grid[dest.row][dest.col] = null;
+					manuallyAddBooger(aClone, dest.row, dest.col);
+				});
+			}
+		}
+
+		function checkAbsorption(piece) {
+			var piecePos = piece.getPosition();
+			var pieceType = piece.getType();
+			var targetDiffs = [[-1,-1], [-1,0], [-1, 1], [0,-1], [0,1], [1,1], [1, -1], [1,0]];
+			var targets = [];
+			targetDiffs.forEach(function(diff) {
+				if (piecePos.row + diff[0] < 0 || piecePos.row + diff[0] >= grid.length) { return; }
+				if (piecePos.col + diff[1] < 0 || piecePos.col + diff[1] >= grid.length) { return; }
+				var targetPiece = grid[piecePos.row + diff[0]][piecePos.col + diff[1]];
+				if (!targetPiece || targetPiece.getType() == pieceType) { return; }
+				targets.push(targetPiece.getPosition());
+			});
+			return targets;
 		}
 
 		// function splitBooger(target, dest) {
