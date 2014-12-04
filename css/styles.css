@@ -1,4 +1,50 @@
 
+body {
+    font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif
+}
+/* fonts */
+h1 {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.3999996185303px;
+}
+h3 {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.3999996185303px;
+}
+p {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+blockquote {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+pre {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714302062988px;
+}
+
+
 .board {
 	position: relative;
 	width: 900px;
@@ -961,8 +1007,12 @@
     background-size:100px 50px;
 }
 
+#game {
+    display: inline-block;
+}
+
 .info-block {
-    width: 300px;
+    width: 200px;
     border: 2px solid #222;
     border-radius: 5px;
     display: inline-block;
@@ -981,4 +1031,13 @@
 .info-block .body {
     padding: 5px;
     color: #222;
+    background-color: aliceblue;
 }
+
+.moo > div {
+    vertical-align: top;
+}
+
+
+
+
