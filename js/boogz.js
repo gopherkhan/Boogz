@@ -39,8 +39,9 @@ window.Boogz = (function Boogz() {
 			'MSAnimationEnd'].forEach(function(eventName) {
 					boog.removeEventListener(eventName, animationEndHandler);
 				});
-			boog.innerHTML = "";
-			boog = null;
+			el.innerHTML = "";
+			boog.classList.remove('booger');
+			//boog = null;
 			el = null;
 		}
 

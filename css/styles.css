@@ -916,11 +916,49 @@
 	width: 98px;
 	height: 98px;
 	border: 1px solid black;
-	background-color: #999;
 }
+
+.tile:nth-child(even) {
+	background-color: forestgreen; /* #026873; */
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
+}
+
+.tile:nth-child(odd) {
+    background-color: saddlebrown; /*darkslategrey; /* seagreen */; /* #026873; */
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
+}
+
+
 
 .tile:hover, .booger:hover {
 	background-color: #cfcfcf;
+}
+
+.tile:hover {
+    background-color: #cfcfcf;
+}
+
+.moo {
+    background-color: aqua;
+}
+
+.seigaiha {
+    background-color: darkmajenta;
+    background-image:
+    radial-gradient(circle at 100% 150%, darkmagenta 24%, white 25%, white 28%, darkmagenta 29%, darkmagenta 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0    150%, darkmagenta 24%, white 25%, white 28%, darkmagenta 29%, darkmagenta 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50%  100%, white 10%, darkmagenta 11%, darkmagenta 23%, white 24%, white 30%, darkmagenta 31%, darkmagenta 43%, white 44%, white 50%, darkmagenta 51%, darkmagenta 63%, white 64%, white 71%, transparent 71%, transparent),
+    radial-gradient(circle at 100% 50%, white 5%, darkmagenta 6%, darkmagenta 15%, white 16%, white 20%, darkmagenta 21%, darkmagenta 30%, white 31%, white 35%, darkmagenta 36%, darkmagenta 45%, white 46%, white 49%, transparent 50%, transparent),
+    radial-gradient(circle at 0    50%, white 5%, darkmagenta 6%, darkmagenta 15%, white 16%, white 20%, darkmagenta 21%, darkmagenta 30%, white 31%, white 35%, darkmagenta 36%, darkmagenta 45%, white 46%, white 49%, transparent 50%, transparent);
+    background-size:100px 50px;
 }
 
 .info-block {
