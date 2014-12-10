@@ -84,6 +84,8 @@ window.Boogz = (function Boogz() {
 			X2: "2x"
 		}
 
+		var dead = false;
+
 		boog.classList.add('booger');
 		if (type) {
 			boog.classList.add(type);
@@ -110,6 +112,7 @@ window.Boogz = (function Boogz() {
 			boog.parentNode.removeChild(boog);
 			boog = null;
 			el = null;
+			dead = true;
 		}
 
 
@@ -135,6 +138,10 @@ window.Boogz = (function Boogz() {
 
 		function render() {
 			return el;
+		}
+
+		function isDead() {
+			return dead;
 		}
 
 		function getPosition() {
@@ -209,7 +216,8 @@ window.Boogz = (function Boogz() {
 			getId: getId,
 			getType: getType,
 			clone: clone,
-			destroy: destroy
+			destroy: destroy,
+			isDead: isDead
 		}
 	}
 
@@ -249,7 +257,7 @@ window.Boogz = (function Boogz() {
 
 		function updateScores() {
 			players.forEach(function(player) {
-				scoreboard.updateScore(player.class, boogs.filter(function(piece) { return piece.getType() == player.class; }).length);
+				scoreboard.updateScore(player.class, boogs.filter(function(piece) { return !piece.isDead() && piece.getType() == player.class; }).length);
 			})
 
 		}
@@ -305,7 +313,9 @@ window.Boogz = (function Boogz() {
 			var selectedPos = selected.getPosition();
 			var pos = getTilePosition(tileIdx);
 			// if the piece is not within the moveable area...
-			if (Math.abs(selectedPos.row - pos.row) > 2 || Math.abs(selectedPos.col - pos.col) > 2) {
+			var rowDiff = Math.abs(selectedPos.row - pos.row);
+			var colDiff = Math.abs(selectedPos.col - pos.col);
+			if (rowDiff > 2 || colDiff > 2 || (colDiff && rowDiff && colDiff != rowDiff)) {
 				return false;
 			}
 			// if there's already something in that spot...
