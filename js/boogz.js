@@ -4,6 +4,35 @@ window.Boogz = (function Boogz() {
 	var boogId = -1;
 	var CELL_DIFF = 100;
 
+	function TurnInfo() {
+		var el = doc.createDocumentFragment();
+		var info = doc.createElement('div');
+		var turnBlock = doc.createElement('div');
+		var labelBlock = doc.createElement('h3');
+		turnBlock.classList.add('current-player');
+		info.appendChild(turnBlock);
+		info.appendChild(labelBlock);
+		el.appendChild(info);
+		var lastTurn;
+
+
+
+		function setTurn(toSet) {
+			turnBlock.classList.remove(lastTurn);
+			turnBlock.classList.add(toSet.class);
+			lastTurn = toSet.class;
+			labelBlock.innerText = toSet.label || "";
+		}
+
+		function render() {
+			return el;
+		}
+
+		return {
+			render: render,
+			setTurn: setTurn
+		}
+	}
 
 	/* el hoa */
 	function Booger(row, col, type) {
@@ -33,6 +62,7 @@ window.Boogz = (function Boogz() {
 		}
 
 		function destroy() {
+			// clean up event listeners and remove piece from the dom
 			['animationend',
 			'webkitAnimationEnd',
 			'oanimationend',
@@ -40,8 +70,8 @@ window.Boogz = (function Boogz() {
 					boog.removeEventListener(eventName, animationEndHandler);
 				});
 			el.innerHTML = "";
-			boog.classList.remove('booger');
-			//boog = null;
+			boog.parentNode.removeChild(boog);
+			boog = null;
 			el = null;
 		}
 
@@ -150,13 +180,34 @@ window.Boogz = (function Boogz() {
 		var height = 9, width = 9;
 		var selected;
 
+		// doesn't really belong here, but I'll refactor later
+		var turnInfo = new TurnInfo();
+		var turnBlockDiv = document.getElementById('current-turn-block');
+		var scoresBlockDiv = document.getElementById('scores-block');
+
+		document.getElementById('')
+
 		var grid = new Array(height);
 
 		for (var rowIdx = 0; rowIdx < grid.length; ++rowIdx) {
 			grid[rowIdx] = new Array(width);
 		}
 		var red = 'red', green = 'green';
+		var players = [{ class:"green", label: "Cow"}, { class: "red", label: "Horse"}];
 		var boogs = [];
+		var numPlayers = 2;
+		var currentPlayerIdx = 0;
+		var currentPlayer = players[currentPlayerIdx];
+
+		turnInfo.setTurn(currentPlayer);
+
+		function toggleTurn() {
+			currentPlayerIdx = (currentPlayerIdx + 1) % numPlayers;
+			currentPlayer = players[currentPlayerIdx];
+			turnInfo.setTurn(currentPlayer);
+		}
+
+		turnBlockDiv.appendChild(turnInfo.render());
 
 
 		// convoluted, I know.
@@ -251,6 +302,7 @@ window.Boogz = (function Boogz() {
 								absorbTargets(cloned, targets);
 							}
 							console.log("targets: " + JSON.stringify(targets));
+							toggleTurn();
 						});
 						selected.select();
 						selected = null;
@@ -266,6 +318,7 @@ window.Boogz = (function Boogz() {
 							if (targets.length) {
 								absorbTargets(moving, targets);
 							}
+							toggleTurn();
 						});
 						selected.select();
 						selected = null;
@@ -276,7 +329,7 @@ window.Boogz = (function Boogz() {
 						// selected = null;
 					 }
 
-				} else if (e.target.classList.contains('booger')) {
+				} else if (e.target.classList.contains('booger') && e.target.classList.contains(currentPlayer.class)) {
 					var aBoogie = boogies[e.target.dataset.id];
 					aBoogie.select();
 					if (e.target.classList.contains('selected')) {

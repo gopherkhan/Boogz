@@ -62,7 +62,19 @@ pre {
 	background-repeat: no-repeat;
 }
 
-.booger.green {
+.current-player {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    background-size: 100px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.booger.green, .current-player.green {
 	/*background-color: green; */
 	background: url('../img/cow.png');
 	background-size: 80% auto;
@@ -71,7 +83,7 @@ pre {
 
 }
 
-.booger.red {
+.booger.red, .current-player.red {
 	/*background-color: lightsalmon; */
 	background: url('../img/horse.png');
 	background-size: 80% auto;
@@ -964,6 +976,7 @@ pre {
 	border: 1px solid black;
 }
 
+/* css pattern taken from http://lea.verou.me/css3patterns/#cicada-stripes */
 .tile:nth-child(even) {
 	background-color: forestgreen; /* #026873; */
     background-image: linear-gradient(180deg, rgba(255,255,255,.07) 50%, transparent 50%),
@@ -1032,6 +1045,7 @@ pre {
     padding: 5px;
     color: #222;
     background-color: aliceblue;
+    text-align: center;
 }
 
 .moo > div {
