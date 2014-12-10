@@ -1053,5 +1053,42 @@ pre {
 }
 
 
+.game-info {
+    position: absolute;
+    background-color: aliceblue;
+    padding: 15px;
+    width: 350px;
+    height: 500px;
+    left: 50%;
+    top: 30px;
+    margin-left: -150px;
+    z-index: 9001;
+    border: 3px solid darkmagenta;
+    border-radius: 6px;
+}
+
+.game-info .header {
+    text-align: center;
+}
+
+.game-info .content {
+    padding: 15px;
+}
+
+.close-btn {
+    height: 20px;
+    padding: 15px;
+    border: 2px solid darkmagenta;
+    border-radius: 3px;
+    text-align: center;
+    background-color: lightskyblue;
+}
+
+.close-btn:hover {
+    background-color: yellowgreen;
+}
+
+
+
 
 

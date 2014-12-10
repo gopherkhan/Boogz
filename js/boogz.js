@@ -31,7 +31,6 @@ window.Boogz = (function Boogz() {
 		}
 
 		function updateScore(player, score) {
-			debugger;
 			playerScores[player].innerText = score;
 		}
 
@@ -329,6 +328,14 @@ window.Boogz = (function Boogz() {
 		function moveIsSplit(source, dest) {
 			return (Math.max(Math.abs(source.col - dest.col), Math.abs(source.row - dest.row)) == 1);
 		}
+
+
+		function hideHelp() {
+			document.getElementById("game-help").style.display = "none";
+		}
+
+
+		var button = document.querySelectorAll('.close-btn')[0].addEventListener('click', hideHelp);
 
 
 		function handleClick(e) {
