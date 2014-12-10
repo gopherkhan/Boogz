@@ -4,6 +4,43 @@ window.Boogz = (function Boogz() {
 	var boogId = -1;
 	var CELL_DIFF = 100;
 
+	function ScoreBoard(players) {
+		var el = doc.createDocumentFragment();
+		var info = doc.createElement('div');
+		var playerScores = {}
+
+		players.forEach(function(player) {
+			var block = doc.createElement('div');
+			var label = doc.createElement('strong');
+			var spacer = doc.createElement('span');
+			spacer.innerText = ': ';
+			label.innerText = player.label;
+			var score = doc.createElement('span');
+			score.innerText = 4;
+			block.appendChild(label);
+			block.appendChild(spacer);
+			block.appendChild(score);
+			info.appendChild(block);
+			playerScores[player.class] = score;
+		});
+
+		el.appendChild(info);
+
+		function render() {
+			return el;
+		}
+
+		function updateScore(player, score) {
+			debugger;
+			playerScores[player].innerText = score;
+		}
+
+		return {
+			render: render,
+			updateScore: updateScore
+		};
+	}
+
 	function TurnInfo() {
 		var el = doc.createDocumentFragment();
 		var info = doc.createElement('div');
@@ -199,12 +236,22 @@ window.Boogz = (function Boogz() {
 		var currentPlayerIdx = 0;
 		var currentPlayer = players[currentPlayerIdx];
 
+		var scoreboard = new ScoreBoard(players);
+		scoresBlockDiv.appendChild(scoreboard.render());
+
 		turnInfo.setTurn(currentPlayer);
 
 		function toggleTurn() {
 			currentPlayerIdx = (currentPlayerIdx + 1) % numPlayers;
 			currentPlayer = players[currentPlayerIdx];
 			turnInfo.setTurn(currentPlayer);
+		}
+
+		function updateScores() {
+			players.forEach(function(player) {
+				scoreboard.updateScore(player.class, boogs.filter(function(piece) { return piece.getType() == player.class; }).length);
+			})
+
 		}
 
 		turnBlockDiv.appendChild(turnInfo.render());
@@ -238,6 +285,7 @@ window.Boogz = (function Boogz() {
 			// replace  color with booger
 			grid[row][col] = toAdd;
 			boogies[toAdd.getId()] = toAdd;
+			updateScores();
 			return toAdd;
 		}
 
