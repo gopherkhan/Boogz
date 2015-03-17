@@ -60,6 +60,7 @@ pre {
     background-size: 100px auto;
 	background-position: center;
 	background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .current-player {
@@ -1082,6 +1083,7 @@ pre {
     border-radius: 3px;
     text-align: center;
     background-color: lightskyblue;
+    cursor: pointer;
 }
 
 .close-btn:hover {
