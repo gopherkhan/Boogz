@@ -157,9 +157,11 @@ window.Boogz = (function Boogz() {
 			callback = function() {
 				row = destination.row;
 				col = destination.col;
+				boog.classList.remove('moving');
 				onComplete();
 				updateCSSPosition();
 			}
+			boog.classList.add('moving');
 			boog.classList.toggle(animationClass);
 
 		}

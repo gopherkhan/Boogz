@@ -1006,6 +1006,10 @@ pre {
     background-color: #cfcfcf;
 }
 
+.booger.moving:hover {
+    background-color: transparent;
+}
+
 .moo {
     background-color: skyblue;
 }
