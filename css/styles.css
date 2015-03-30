@@ -1,7 +1,18 @@
 
 body {
-    font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif
+    text-align: center;
+    background-color: skyblue;
+    font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif;
+    width: 100%;
+    padding-top: 30px;
 }
+
+.moo {
+    width: 1111px;
+    text-align: left;
+    display: inline-block;
+}
+
 /* fonts */
 h1 {
     font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
@@ -1008,10 +1019,6 @@ pre {
 
 .booger.moving:hover {
     background-color: transparent;
-}
-
-.moo {
-    background-color: skyblue;
 }
 
 .seigaiha {
