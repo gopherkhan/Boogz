@@ -254,6 +254,7 @@ window.Boogz = (function Boogz() {
 			currentPlayerIdx = (currentPlayerIdx + 1) % numPlayers;
 			currentPlayer = players[currentPlayerIdx];
 			turnInfo.setTurn(currentPlayer);
+			checkGameState();
 		}
 
 		function updateScores() {
@@ -339,6 +340,9 @@ window.Boogz = (function Boogz() {
 
 		var button = document.querySelectorAll('.close-btn')[0].addEventListener('click', hideHelp);
 
+		var winScreen = document.querySelector("#win-screen");
+		winScreenText = winScreen.querySelector('.content');
+		winScreen.querySelector('.restart-btn').addEventListener('click', resetGame);
 
 		function handleClick(e) {
 			if (e.target) {
@@ -398,6 +402,9 @@ window.Boogz = (function Boogz() {
 
 				} else if (e.target.classList.contains('booger') && e.target.classList.contains(currentPlayer.class)) {
 					var aBoogie = boogies[e.target.dataset.id];
+					if (!pieceIsSelectable(aBoogie)) {
+						return;
+					}
 					aBoogie.select();
 					if (e.target.classList.contains('selected')) {
 						selected = aBoogie;
@@ -406,6 +413,39 @@ window.Boogz = (function Boogz() {
 					}
 
 				}
+			}
+		}
+
+		function resetGame() {
+			window.location.reload();
+		}
+
+		function displayWinScreen() {
+			var players = {}
+			// TODO: Put this in a better spot. Just adding the win logic quiclkly
+			boogs.forEach(function(boog) {
+				if (boog.isDead()) { return; }
+				var type = boog.getType();
+				players[type] = players[type] || 0;
+				players[type] += 1;
+			});
+
+			winScreenText.innerText ="Final score: " + JSON.stringify(players);
+			winScreen.classList.toggle('hidden');
+		}
+
+		function checkGameState() {
+			var canMove = false;
+			var piece;
+			for (var i = 0; i < boogs.length; ++i) {
+				piece = boogs[i];
+				if (piece.getType() == currentPlayer.class && pieceIsSelectable(piece)) {
+					canMove = true;
+					break;
+				}
+			}
+			if (!canMove) {
+				displayWinScreen();
 			}
 		}
 
@@ -430,6 +470,24 @@ window.Boogz = (function Boogz() {
 					manuallyAddBooger(aClone, dest.row, dest.col);
 				});
 			}
+		}
+
+		function pieceIsSelectable(piece) {
+			var piecePos = piece.getPosition();
+			var targetDiffs = [[-1,-1], [-1,0], [-1, 1], [0,-1], [0,1], [1,1], [1, -1], [1,0], [-2,-2], [-2,0], [-2, 2], [0,-2], [0,2], [2,2], [2, -2], [2,0]];
+			var selectable = false;
+			var diff;
+			for (var i = 0; i < targetDiffs.length; ++i) {
+				diff = targetDiffs[i];
+				if (piecePos.row + diff[0] < 0 || piecePos.row + diff[0] >= grid.length) { continue; }
+				if (piecePos.col + diff[1] < 0 || piecePos.col + diff[1] >= grid.length) { continue; }
+				var targetPiece = grid[piecePos.row + diff[0]][piecePos.col + diff[1]];
+				if (!targetPiece) { 
+					selectable = true;
+					break; 
+				}
+			}
+			return selectable;
 		}
 
 		function checkAbsorption(piece) {

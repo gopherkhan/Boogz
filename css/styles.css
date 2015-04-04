@@ -4,7 +4,6 @@ body {
     background-color: skyblue;
     font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif;
     width: 100%;
-    padding-top: 30px;
 }
 
 .moo {
@@ -1042,6 +1041,10 @@ pre {
     border-radius: 5px;
     display: inline-block;
     overflow: hidden;
+}
+
+.hidden {
+    display: none;
 }
 
 .info-block .header {
