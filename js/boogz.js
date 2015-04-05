@@ -422,6 +422,7 @@ window.Boogz = (function Boogz() {
 
 		function displayWinScreen() {
 			var players = {}
+			// TODO: Refactor this. Just a quick hack on a saturday evening
 			// TODO: Put this in a better spot. Just adding the win logic quiclkly
 			boogs.forEach(function(boog) {
 				if (boog.isDead()) { return; }
@@ -429,8 +430,18 @@ window.Boogz = (function Boogz() {
 				players[type] = players[type] || 0;
 				players[type] += 1;
 			});
+			var playerTypes = Object.keys(players);
+			var winBlock = "";
+			if (players[playerTypes[0]] > players[playerTypes[1]]) {
+				winBlock = "<div class='current-player " + playerTypes[0] + "'></div><h3>Winner</h3>";
+			} else if (players[playerTypes[0]] < players[playerTypes[1]]) {
+				winBlock = "<div class='current-player " + playerTypes[1] + "'></div><h3>Winner</h3>";
+			} else {
+				winBlock = "<div class='current-player " + playerTypes[0] + "'></div><div class='current-player " + playerTypes[1] + "'></div><h3>Tie!</h3>";
+			}
 
-			winScreenText.innerText ="Final score: " + JSON.stringify(players);
+			var template = "";
+			winScreenText.innerHTML = winBlock;
 			winScreen.classList.toggle('hidden');
 		}
 
@@ -473,6 +484,7 @@ window.Boogz = (function Boogz() {
 		}
 
 		function pieceIsSelectable(piece) {
+			if (piece.isDead()) { return false; }
 			var piecePos = piece.getPosition();
 			var targetDiffs = [[-1,-1], [-1,0], [-1, 1], [0,-1], [0,1], [1,1], [1, -1], [1,0], [-2,-2], [-2,0], [-2, 2], [0,-2], [0,2], [2,2], [2, -2], [2,0]];
 			var selectable = false;

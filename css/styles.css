@@ -1090,7 +1090,11 @@ pre {
     padding: 15px;
 }
 
-.close-btn {
+#win-screen .content {
+    text-align: center;
+}
+
+.close-btn, .restart-btn {
     height: 20px;
     padding: 15px;
     border: 2px solid darkmagenta;
